@@ -1,4 +1,4 @@
 package ch.zli.m223.todo.service;
 
-public class ListService {
+public class ToDoListService {
 }

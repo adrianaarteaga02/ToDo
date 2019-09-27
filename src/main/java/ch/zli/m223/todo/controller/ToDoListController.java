@@ -1,4 +1,4 @@
 package ch.zli.m223.todo.controller;
 
-public class ListController {
+public class ToDoListController {
 }
