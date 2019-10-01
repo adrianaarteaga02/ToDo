@@ -1,5 +1,8 @@
 package ch.zli.m223.todo.domain;
 
+import javax.persistence.Entity;
+
+@Entity
 public class Entry {
     private long id;
     private String name;
