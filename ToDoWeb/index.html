@@ -8,7 +8,8 @@
 <body>
 
 <div class="projects">
-    <span onclick="newElement()" class="addProject" style="width: 100%">Add Project</span>
+    <input type="text" id="projectTitle" placeholder="Title of new entry...">
+    <span onclick="newProject()" class="addProject" style="width: 100%">Add Project</span>
     <a href="#projectOne">Project Title</a>
     <a href="#projectOne">Project Title</a>
     <a href="#projectOne">Project Title</a>
@@ -33,17 +34,17 @@
 
 <div id="projects" class="lists">
     <div id="projectOne">
-        <button type="button" class="collapsible">To-Do-List 1</button>
+        <button type="button" class="collapsible"><h2>To-Do-List 1</h2></button>
 
         <div class="content">
 
             <div id="listOne" class="header">
                 <h2>Some title</h2>
-                <input type="text" id="myInput" placeholder="Title of new entry...">
+                <input type="text" id="entryTitle" placeholder="Title of new entry...">
                 <span onclick="newElementList()" class="addList">Add</span>
             </div>
 
-            <ul id="myUL">
+            <ul id="listEntries1">
                 <li>Hit the gym</li>
                 <li class="checked">Pay bills</li>
                 <li>Meet George</li>
@@ -59,6 +60,7 @@
 
 
 <script>
+
     // Create a "close" button and append it to each list item
     var myNodelist = document.getElementsByTagName("LI");
     var i;
@@ -88,16 +90,52 @@
         }
     }, false);
 
+
     // Create a new list item when clicking on the "Add" button
     function newElementList() {
         var li = document.createElement("li");
-        var inputValue = document.getElementById("myInput").value;
+        var inputValue = document.getElementById("entryTitle").value;
+        var t = document.createTextNode(inputValue);
+
+        li.appendChild(t);
+
+        if (inputValue === '') {
+            alert("You must write something!");
+
+        } else {
+            document.getElementById("listEntries1").appendChild(li);
+
+        }
+        document.getElementById("entryTitle").value = "";
+
+        var span = document.createElement("SPAN");
+        var txt = document.createTextNode("\u00D7");
+
+        span.className = "close";
+        span.appendChild(txt);
+        li.appendChild(span);
+
+        for (i = 0; i < close.length; i++) {
+            close[i].onclick = function () {
+                var div = this.parentElement;
+                div.style.display = "none";
+            }
+        }
+    }
+
+</script>
+
+<script>
+    // create Projects
+    function newProject() {
+        var li = document.createElement("li");
+        var inputValue = document.getElementById("projectTitle").value;
         var t = document.createTextNode(inputValue);
         li.appendChild(t);
         if (inputValue === '') {
             alert("You must write something!");
         } else {
-            document.getElementById("myUL").appendChild(li);
+            document.getElementById("listProjects").appendChild(li);
         }
         document.getElementById("myInput").value = "";
 
@@ -115,7 +153,10 @@
         }
     }
 
+</script>
 
+<script>
+    // Collapse To-Do-List
     var coll = document.getElementsByClassName("collapsible");
     var i;
 
