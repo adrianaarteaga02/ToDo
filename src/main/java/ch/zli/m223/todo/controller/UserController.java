@@ -9,7 +9,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("/entries")
+@RequestMapping("/users")
 public class UserController {
 
     private UserService userService;
@@ -20,25 +20,25 @@ public class UserController {
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public List<User> getAllEntries() {
+    public List<User> getAllUsers() {
         return userService.findAll();
     }
 
-    @PostMapping("new")
+    @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public User createUser(@Valid @RequestBody User user) {
+    public User createEntry(@Valid @RequestBody User user) {
         return userService.createUser(user);
     }
 
     @DeleteMapping("{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteUser(@PathVariable Long id) {
+    public void deleteEntry(@PathVariable Long id) {
         userService.deleteUserById(id);
     }
 
     @PutMapping("{id}")
     @ResponseStatus(HttpStatus.OK)
-    public User updateUser(@Valid @RequestBody User user, @PathVariable Long id) {
+    public User updateEntry(@Valid @RequestBody User user, @PathVariable Long id) {
         return userService.updateUser(user, id);
     }
 }

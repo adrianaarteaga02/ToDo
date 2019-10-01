@@ -9,7 +9,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("/entries")
+@RequestMapping("/todolists")
 public class ToDoListController {
 
     private ToDoListService toDoListService;
@@ -20,7 +20,7 @@ public class ToDoListController {
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public List<ToDoList> getAllEntries() {
+    public List<ToDoList> getAllToDoLists() {
         return toDoListService.findAll();
     }
 
