@@ -1,16 +1,30 @@
 package ch.zli.m223.todo.domain;
 
-import javax.persistence.Entity;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
+import javax.persistence.*;
 
 @Entity
 public class Project {
-    private long id;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(nullable = false)
     private String name;
+
+    @Column
     private String description;
+
+    @JsonBackReference
+    @ManyToOne
+    @JoinColumn(nullable = false)
     private User user;
 
+
     // Setter
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -42,4 +56,5 @@ public class Project {
     public User getUser() {
         return user;
     }
+
 }
