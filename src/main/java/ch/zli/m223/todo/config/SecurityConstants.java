@@ -1,6 +1,7 @@
 package ch.zli.m223.todo.config;
 
-public class SecurityConstants {
+public final class SecurityConstants {
+
     public static final String AUTH_LOGIN_URL = "/api/authenticate";
 
     // Signing key for HS512 algorithm
