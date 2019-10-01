@@ -1,9 +1,9 @@
 package ch.zli.m223.todo.repository;
 
-import ch.zli.m223.todo.domain.User;
+import ch.zli.m223.todo.domain.Permission;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, Long> {
+public interface PermissionRepository extends JpaRepository<Permission, Long> {
 }
