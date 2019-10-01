@@ -23,9 +23,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class JwtAuthorizationFilter { // extends BasicAuthenticationFilter
+public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
 
-    /*private static final Logger log = LoggerFactory.getLogger(JwtAuthorizationFilter.class);
+    private static final Logger log = LoggerFactory.getLogger(JwtAuthorizationFilter.class);
 
     public JwtAuthorizationFilter(AuthenticationManager authenticationManager) {
         super(authenticationManager);
@@ -80,5 +80,5 @@ public class JwtAuthorizationFilter { // extends BasicAuthenticationFilter
         }
 
         return null;
-    }*/
+    }
 }

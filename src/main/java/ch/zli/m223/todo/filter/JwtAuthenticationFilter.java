@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
 
 public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
-    /*private final AuthenticationManager authenticationManager;
+    private final AuthenticationManager authenticationManager;
 
     public JwtAuthenticationFilter(AuthenticationManager authenticationManager) {
         this.authenticationManager = authenticationManager;
@@ -29,9 +29,9 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) {
-        var email = request.getParameter("email");
+        var username = request.getParameter("username");
         var password = request.getParameter("password");
-        var authenticationToken = new UsernamePasswordAuthenticationToken(email, password);
+        var authenticationToken = new UsernamePasswordAuthenticationToken(username, password);
 
         return authenticationManager.authenticate(authenticationToken);
     }
@@ -41,7 +41,7 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
                                             FilterChain filterChain, Authentication authentication) {
         var user = ((User) authentication.getPrincipal());
 
-        var roles = user.getPermission()
+        var roles = user.getAuthorities()
                 .stream()
                 .map(GrantedAuthority::getAuthority)
                 .collect(Collectors.toList());
@@ -59,5 +59,5 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
                 .compact();
 
         response.addHeader(SecurityConstants.TOKEN_HEADER, SecurityConstants.TOKEN_PREFIX + token);
-    }*/
+    }
 }
