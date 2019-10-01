@@ -19,7 +19,7 @@ public class ToDoListService {
         return toDoListRepository.findAll();
     }
 
-    public Optional<ToDoList> findToDoListById(long id) {
+    private Optional<ToDoList> findToDoListById(long id) {
         return toDoListRepository.findById(id);
     }
 
@@ -42,7 +42,6 @@ public class ToDoListService {
             updatedToDoList.setName(toDoList.getName());
             updatedToDoList.setDescription(toDoList.getDescription());
             updatedToDoList.setProject(toDoList.getProject());
-
         } else {
             updatedToDoList = toDoList;
             updatedToDoList.setId(id);

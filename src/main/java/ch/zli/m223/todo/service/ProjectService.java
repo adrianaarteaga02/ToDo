@@ -19,7 +19,7 @@ public class ProjectService {
         return projectRepository.findAll();
     }
 
-    public Optional<Project> findProjectById(long id) {
+    private Optional<Project> findProjectById(long id) {
         return projectRepository.findById(id);
     }
 
@@ -42,7 +42,6 @@ public class ProjectService {
             updatedProject.setName(project.getName());
             updatedProject.setDescription(project.getDescription());
             updatedProject.setUser(project.getUser());
-
         } else {
             updatedProject = project;
             updatedProject.setId(id);

@@ -19,7 +19,7 @@ public class EntryService {
         return entryRepository.findAll();
     }
 
-    public Optional<Entry> findEntryById(long id) {
+    private Optional<Entry> findEntryById(long id) {
         return entryRepository.findById(id);
     }
 

@@ -1,6 +1,8 @@
 package ch.zli.m223.todo.service;
 
+import ch.zli.m223.todo.domain.Entry;
 import ch.zli.m223.todo.domain.User;
+import ch.zli.m223.todo.repository.EntryRepository;
 import ch.zli.m223.todo.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
@@ -35,15 +37,12 @@ public class UserService {
 
     public User updateUser(User user, Long id) {
         User updatedUser;
-        Optional<User> optionalUpdatedUser = findUserById(id);
+        Optional<User> optionalUpdatedEntry = findUserById(id);
 
-        if (optionalUpdatedUser.isPresent()) {
-            updatedUser = optionalUpdatedUser.get();
-            updatedUser.setFirstname(user.getFirstname());
-            updatedUser.setLastname(user.getLastname());
+        if (optionalUpdatedEntry.isPresent()) {
+            updatedUser = optionalUpdatedEntry.get();
             updatedUser.setEmail(user.getEmail());
-            updatedUser.setFirstname(user.getFirstname());
-
+            updatedUser.setPassword(user.getPassword());
         } else {
             updatedUser = user;
             updatedUser.setId(id);
