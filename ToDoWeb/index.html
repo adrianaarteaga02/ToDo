@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>To-Do</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+
+<div class="projects">
+    <span onclick="newElement()" class="addProject" style="width: 100%">Add Project</span>
+    <a href="#projectOne">Project Title</a>
+    <a href="#projectOne">Project Title</a>
+    <a href="#projectOne">Project Title</a>
+    <a href="#projectOne">Project Title</a>
+    <a href="#projectOne">Project Title</a>
+    <a href="#projectOne">Project Title</a>
+</div>
+
+<div id="header">
+    <span onclick="newElement()" class="addProject">Add To-Do-List</span>
+
+    <div class="dropdown">
+        <button class="dropbtn">User</button>
+        <div class="dropdown-content">
+            <a href="#">Settings</a>
+            <a href="#">See all Users</a>
+            <a href="#">Log Out</a>
+        </div>
+    </div>
+
+</div>
+
+<div id="projects" class="lists">
+    <div id="projectOne">
+        <button type="button" class="collapsible">To-Do-List 1</button>
+
+        <div class="content">
+
+            <div id="listOne" class="header">
+                <h2>Some title</h2>
+                <input type="text" id="myInput" placeholder="Title of new entry...">
+                <span onclick="newElementList()" class="addList">Add</span>
+            </div>
+
+            <ul id="myUL">
+                <li>Hit the gym</li>
+                <li class="checked">Pay bills</li>
+                <li>Meet George</li>
+                <li>Buy eggs</li>
+                <li>Read a book</li>
+                <li>Organize office</li>
+            </ul>
+
+        </div>
+
+    </div>
+</div>
+
+
+<script>
+    // Create a "close" button and append it to each list item
+    var myNodelist = document.getElementsByTagName("LI");
+    var i;
+    for (i = 0; i < myNodelist.length; i++) {
+        var span = document.createElement("SPAN");
+        var txt = document.createTextNode("\u00D7");
+        span.className = "close";
+        span.appendChild(txt);
+        myNodelist[i].appendChild(span);
+    }
+
+    // Click on a close button to hide the current list item
+    var close = document.getElementsByClassName("close");
+    var i;
+    for (i = 0; i < close.length; i++) {
+        close[i].onclick = function () {
+            var div = this.parentElement;
+            div.style.display = "none";
+        }
+    }
+
+    // Add a "checked" symbol when clicking on a list item
+    var list = document.querySelector('ul');
+    list.addEventListener('click', function (ev) {
+        if (ev.target.tagName === 'LI') {
+            ev.target.classList.toggle('checked');
+        }
+    }, false);
+
+    // Create a new list item when clicking on the "Add" button
+    function newElementList() {
+        var li = document.createElement("li");
+        var inputValue = document.getElementById("myInput").value;
+        var t = document.createTextNode(inputValue);
+        li.appendChild(t);
+        if (inputValue === '') {
+            alert("You must write something!");
+        } else {
+            document.getElementById("myUL").appendChild(li);
+        }
+        document.getElementById("myInput").value = "";
+
+        var span = document.createElement("SPAN");
+        var txt = document.createTextNode("\u00D7");
+        span.className = "close";
+        span.appendChild(txt);
+        li.appendChild(span);
+
+        for (i = 0; i < close.length; i++) {
+            close[i].onclick = function () {
+                var div = this.parentElement;
+                div.style.display = "none";
+            }
+        }
+    }
+
+
+    var coll = document.getElementsByClassName("collapsible");
+    var i;
+
+    for (i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function () {
+            this.classList.toggle("active");
+            var content = this.nextElementSibling;
+            if (content.style.display === "block") {
+                content.style.display = "none";
+            } else {
+                content.style.display = "block";
+            }
+        });
+    }
+</script>
+</body>
+</html>
